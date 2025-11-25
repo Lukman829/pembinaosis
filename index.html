@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Selamat Hari Guru Nasional Untuk Pembina OSIS</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --card-bg: rgba(255,255,255,0.06);
+    --accent: #ff4787;
+    --muted: #cccccc;
+  }
+  body{
+    margin:0;
+    font-family:Poppins, sans-serif;
+    background:linear-gradient(180deg,#050509 0%, #0b0b0d 100%);
+    color:white;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+
+  /* ========== INTRO SCREEN ========== */
+  #introScreen{
+    position:fixed; inset:0;
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    text-align:center;
+    background:linear-gradient(180deg,#06060a,#0a0a0d);
+    z-index:40;
+    padding:28px;
+  }
+
+  .introText{
+    opacity:0;
+    font-size:1.15rem;
+    font-weight:500;
+    max-width:86%;
+    margin-bottom:12px;
+    color:var(--muted);
+    transition:opacity .9s;
+  }
+
+  #introCard{
+    margin-top:26px;
+    opacity:0;
+    transform:translateY(60px);
+    transition: transform 900ms cubic-bezier(.25,.95,.45,1), opacity 900ms;
+    background:var(--card-bg);
+    padding:22px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.06);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 18px 50px rgba(0,0,0,.6);
+    color:#fff;
+    width:min(720px,92%);
+  }
+
+  #startBtn{
+    margin-top:14px;
+    padding:12px 22px;
+    font-size:1.05rem;
+    border:0; border-radius:12px;
+    background:var(--accent);
+    color:white; cursor:pointer;
+    transform:scale(.7);
+    opacity:0;
+    transition:opacity .45s, transform .45s ease;
+  }
+  #startBtn.show{ transform:scale(1); opacity:1; }
+
+  /* ========== MAIN PAGE ========== */
+  #mainPage{
+    opacity:0; pointer-events:none;
+    transition:opacity .9s;
+    text-align:center;
+    min-height:100vh;
+    padding:40px 18px 80px;
+  }
+
+  #mainPage .container{
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  /* Title */
+  #mainPage h1{
+    margin:8px 0 6px;
+    font-size:2.25rem;
+    letter-spacing:1px;
+    color:#fff;
+  }
+  #mainPage p.lead{
+    color:#ddd; margin:0 auto 26px; max-width:760px; font-size:1.05rem;
+  }
+
+  /* Gallery grid */
+  .gallery{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap:14px;
+    align-items:start;
+    margin-top:22px;
+  }
+  .thumb{
+    background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border-radius:12px;
+    padding:6px;
+    border:1px solid rgba(255,255,255,0.05);
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s;
+  }
+  .thumb:hover{ transform:translateY(-6px); box-shadow:0 18px 50px rgba(0,0,0,.55); }
+  .thumb img{ width:100%; height:140px; object-fit:cover; border-radius:8px; display:block; }
+
+  .caption{
+    margin-top:8px; font-size:.92rem; color:#eee; text-align:left;
+  }
+  .sub{
+    font-size:.82rem; color:#bbb; margin-top:4px;
+  }
+
+  /* Lightbox modal */
+  #lightbox{
+    position:fixed; inset:0; display:none;
+    background:rgba(2,2,2,0.88); z-index:60;
+    align-items:center; justify-content:center;
+    padding:18px;
+  }
+  #lightbox.active{ display:flex; }
+  #lightbox .content{
+    max-width:1100px; width:100%;
+    text-align:center; position:relative;
+  }
+  #lightbox img{ max-width:100%; max-height:78vh; border-radius:10px; display:block; margin:0 auto; }
+  #lightbox .close, #lightbox .prev, #lightbox .next{
+    position:absolute; top:12px; background:transparent; border:0; color:#fff; font-size:1.25rem; cursor:pointer; padding:8px;
+  }
+  #lightbox .close{ right:12px; }
+  #lightbox .prev{ left:8px; top:50%; transform:translateY(-50%); font-size:2rem; }
+  #lightbox .next{ right:8px; top:50%; transform:translateY(-50%); font-size:2rem; }
+  #lightbox .lb-caption{ margin-top:10px; color:#e7e7e7; font-size:1rem; }
+
+  /* footer */
+  footer{ margin-top:34px; color:#999; font-size:.9rem; text-align:center; }
+
+  /* responsive tweaks */
+  @media (max-width:520px){
+    .introText{ font-size:1rem; }
+    #mainPage h1{ font-size:1.6rem; padding-top:20px; }
+    .thumb img{ height:120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="introScreen">
+  <div id="t1" class="introText">Di balik semangat OSIS ada sosok Pembina yang setia membimbing.</div>
+  <div id="t2" class="introText">Pembina OSIS: teman, mentor, dan penuntun energi positif kami.</div>
+  <div id="t3" class="introText">Terima kasih atas waktu, saran, dan doa yang tak berhenti.</div>
+
+  <div id="introCard">
+    <h2 style="margin:6px 0 8px;">Selamat Hari Guru Nasional</h2>
+    <div style="color:#eee8; font-size:.98rem; margin-bottom:12px;">
+      Untuk Pembina OSIS tercinta terima kasih telah membimbing kami jadi lebih baik.
+    </div>
+    <button id="startBtn">Untuk Pembina OSIS</button>
+  </div>
+</div>
+
+<!-- HALAMAN UTAMA -->
+<div id="mainPage" aria-hidden="true">
+  <div class="container">
+    <h1>SELAMAT HARI GURU</h1>
+    <p class="lead">
+      Terima kasih Pembina OSIS atas dedikasi, kesabaran, dan inspirasinya. Berikut foto-foto momen kami bersama sebagai bentuk penghargaan dan kenangan.
+    </p>
+
+    <!-- AUDIO (akan diputar saat interaksi tombol) -->
+    <audio id="musik" src="guruku_tercinta.mp3" preload="auto"></audio>
+
+    <!-- GALERI -->
+    <div class="gallery" id="gallery">
+      <!-- Ubah nama file di bawah sesuai foto kalian -->
+      <div class="thumb" data-index="0" data-caption="Pembina OSIS bersama pengurus - Upacara">
+        <img src="pembina1.jpg" alt="Pembina dengan pengurus OSIS">
+        <div class="caption"></div>
+        <div class="sub"></div>
+      </div>
+
+      <div class="thumb" data-index="1" data-caption="Foto bersama pembina OSIS">
+        <img src="kita1.jpg" alt="Foto bersama Pembina di ruang OSIS">
+        <div class="caption"></div>
+        <div class="sub"></div>
+      </div>
+
+      <!-- tambahkan thumb lain sesuai kebutuhan -->
+     
+    </div>
+
+    <footer>
+      <small>Dibuat oleh Pengurus OSIS Selamat Hari Guru Nasional</small>
+    </footer>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="content" id="lbContent">
+    <button class="close" aria-label="Tutup (Esc)">✕</button>
+    <button class="prev" aria-label="Sebelumnya">‹</button>
+    <img id="lbImage" src="" alt="">
+    <button class="next" aria-label="Selanjutnya">›</button>
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+</div>
+
+<script>
+/* ====== Intro text fade ====== */
+function fadeIn(id, delay){ setTimeout(()=> document.getElementById(id).style.opacity=1, delay); }
+fadeIn("t1",400);
+fadeIn("t2",2000);
+fadeIn("t3",3600);
+
+/* show card & button */
+setTimeout(()=> {
+  const ic = document.getElementById('introCard');
+  ic.style.opacity="1"; ic.style.transform="translateY(0)";
+},4600);
+setTimeout(()=> document.getElementById('startBtn').classList.add('show'),5800);
+
+/* ====== Button action: tutup intro, buka main, play musik ====== */
+const startBtn = document.getElementById('startBtn');
+startBtn.addEventListener('click', () => {
+  const intro = document.getElementById('introScreen');
+  const main = document.getElementById('mainPage');
+  const musik = document.getElementById('musik');
+
+  intro.style.transition = "opacity .85s";
+  intro.style.opacity = 0;
+
+  // try play musik after user interaction (some browsers require user gesture)
+  const p = musik.play();
+  if (p !== undefined) {
+    p.catch(()=> { /* autoplay blocked — tetap lanjut tanpa audio */ });
+  }
+
+  setTimeout(()=> {
+    intro.style.display = 'none';
+    main.style.opacity = 1;
+    main.style.pointerEvents = 'auto';
+    main.removeAttribute('aria-hidden');
+  }, 900);
+});
+
+/* ====== Gallery / Lightbox ====== */
+const thumbs = Array.from(document.querySelectorAll('.thumb'));
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImage');
+const lbCaption = document.getElementById('lbCaption');
+let currentIndex = 0;
+
+function openLightbox(index){
+  const thumb = thumbs[index];
+  const img = thumb.querySelector('img').src;
+  const caption = thumb.getAttribute('data-caption') || thumb.querySelector('.caption')?.innerText || '';
+  lbImg.src = img;
+  lbImg.alt = caption;
+  lbCaption.textContent = caption;
+  currentIndex = index;
+  lightbox.classList.add('active');
+  lightbox.setAttribute('aria-hidden','false');
+}
+
+// click thumbs
+thumbs.forEach((t, i) => {
+  t.addEventListener('click', ()=> openLightbox(i));
+});
+
+// controls
+document.querySelector('#lightbox .close').addEventListener('click', closeLightbox);
+document.querySelector('#lightbox .prev').addEventListener('click', ()=> { navigate(-1); });
+document.querySelector('#lightbox .next').addEventListener('click', ()=> { navigate(1); });
+
+function closeLightbox(){
+  lightbox.classList.remove('active');
+  lightbox.setAttribute('aria-hidden','true');
+}
+
+// navigate prev/next (wrap)
+function navigate(dir){
+  const next = (currentIndex + dir + thumbs.length) % thumbs.length;
+  openLightbox(next);
+}
+
+// keyboard support
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navigate(-1);
+  if (e.key === 'ArrowRight') navigate(1);
+});
+
+// close by clicking backdrop
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+</script>
+
+</body>
+</html>
